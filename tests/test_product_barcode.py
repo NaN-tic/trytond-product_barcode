@@ -17,9 +17,9 @@ from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT, test_view,\
 from trytond.transaction import Transaction
 
 
-class HellowordTestCase(unittest.TestCase):
+class ProductBarcodeTestCase(unittest.TestCase):
     '''
-    Test Helloword module.
+    Test Product Barcode module.
     '''
 
     def setUp(self):
@@ -41,7 +41,7 @@ class HellowordTestCase(unittest.TestCase):
 def suite():
     suite = trytond.tests.test_tryton.suite()
     suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
-        HellowordTestCase))
+        ProductBarcodeTestCase))
     return suite
 
 if __name__ == '__main__':
