@@ -26,11 +26,15 @@ class ProductCode(ModelSQL, ModelView):
     barcode = fields.Selection(CODES, 'Code', 
         help="Setting code will enable validation of the product number.")
     number = fields.Char('Number', required=True)
+    sequence = fields.Integer('Sequence',
+        order_field='(%(table)s.sequence IS NULL) %(order)s, '
+        '%(table)s.sequence %(order)s')
     product = fields.Many2One('product.product', 'Product', required=True)
 
     @classmethod
     def __setup__(cls):
         super(ProductCode, cls).__setup__()
+        cls._order.insert(0, ('sequence', 'ASC'))
         cls._constraints += [
             ('check_barcode_number', 'invalid_barcode_number'),
         ]

@@ -9,11 +9,13 @@ The COPYRIGHT file at the top level of this repository contains the full copyrig
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                <form string="Product Codes" col="5">
+                <form string="Product Codes" col="6">
                     <label name="barcode"/>
                     <field name="barcode"/>
                     <label name="number"/>
                     <field name="number"/>
+                    <label name="sequence"/>
+                    <field name="sequence"/>
                 </form>
                 ]]>
             </field>
