@@ -1,0 +1,111 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:product.code:"
+msgid "Invalid Barcode number!"
+msgstr "El número de codi no es correcta."
+
+msgctxt "field:product.code,barcode:"
+msgid "Code"
+msgstr "Codi"
+
+msgctxt "field:product.code,create_date:"
+msgid "Create Date"
+msgstr "Data creació"
+
+msgctxt "field:product.code,create_uid:"
+msgid "Create User"
+msgstr "Usuari creació"
+
+msgctxt "field:product.code,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.code,number:"
+msgid "Number"
+msgstr "Número"
+
+msgctxt "field:product.code,product:"
+msgid "Product"
+msgstr "Producte"
+
+msgctxt "field:product.code,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:product.code,write_date:"
+msgid "Write Date"
+msgstr "Data modificació"
+
+msgctxt "field:product.code,write_uid:"
+msgid "Write User"
+msgstr "Usuari modificació"
+
+msgctxt "field:product.product,codes:"
+msgid "Codes"
+msgstr "Codis"
+
+msgctxt "help:product.code,barcode:"
+msgid "Setting code will enable validation of the product number."
+msgstr "El codi del producte serà validat."
+
+msgctxt "model:product.code,name:"
+msgid "ProductCode"
+msgstr "Codi de producte"
+
+msgctxt "selection:product.code,barcode:"
+msgid "CODE39"
+msgstr ""
+
+msgctxt "selection:product.code,barcode:"
+msgid "EAN"
+msgstr ""
+
+msgctxt "selection:product.code,barcode:"
+msgid "EAN13"
+msgstr ""
+
+msgctxt "selection:product.code,barcode:"
+msgid "EAN8"
+msgstr ""
+
+msgctxt "selection:product.code,barcode:"
+msgid "GS1"
+msgstr ""
+
+msgctxt "selection:product.code,barcode:"
+msgid "GTIN"
+msgstr ""
+
+msgctxt "selection:product.code,barcode:"
+msgid "ISBN"
+msgstr ""
+
+msgctxt "selection:product.code,barcode:"
+msgid "ISBN10"
+msgstr ""
+
+msgctxt "selection:product.code,barcode:"
+msgid "ISBN13"
+msgstr ""
+
+msgctxt "selection:product.code,barcode:"
+msgid "ISSN"
+msgstr ""
+
+msgctxt "selection:product.code,barcode:"
+msgid "JAN"
+msgstr ""
+
+msgctxt "selection:product.code,barcode:"
+msgid "PZN"
+msgstr ""
+
+msgctxt "selection:product.code,barcode:"
+msgid "UPC"
+msgstr ""
+
+msgctxt "selection:product.code,barcode:"
+msgid "UPCA"
+msgstr ""

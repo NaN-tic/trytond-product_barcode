@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!-- This file is part product_barcode module for Tryton.
+The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+         <!-- product.images -->
+        <record model="ir.ui.view" id="product_barcode_view_form">
+            <field name="model">product.code</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Product Codes" col="5">
+                    <label name="barcode"/>
+                    <field name="barcode"/>
+                    <label name="number"/>
+                    <field name="number"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="product_barcode_view_tree">
+            <field name="model">product.code</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Product Codes">
+                    <field name="barcode"/>
+                    <field name="number"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+
+        <!-- product.product -->
+        <record model="ir.ui.view" id="product_view_form">
+            <field name="model">product.product</field>
+            <field name="inherit" ref="product.product_view_form"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath
+                        expr="/form/notebook"
+                        position="inside">
+                        <page string="Codes" id="codes">
+                            <field name="codes" colspan="6"/>
+                        </page>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+    </data>
+</tryton>
