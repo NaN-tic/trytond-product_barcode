@@ -3,7 +3,7 @@
 The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
-         <!-- product.images -->
+         <!-- product.barcode -->
         <record model="ir.ui.view" id="product_barcode_view_form">
             <field name="model">product.code</field>
             <field name="type">form</field>
@@ -42,11 +42,10 @@ The COPYRIGHT file at the top level of this repository contains the full copyrig
                 <![CDATA[
                 <data>
                     <xpath
-                        expr="/form/notebook"
-                        position="inside">
-                        <page string="Codes" id="codes">
-                            <field name="codes" colspan="6"/>
-                        </page>
+                        expr="/form/field[@name='description']"
+                        position="after">
+                        <separator name="codes" colspan="6"/>
+                        <field name="codes" colspan="6"/>
                     </xpath>
                 </data>
                 ]]>
