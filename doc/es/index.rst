@@ -20,21 +20,3 @@ Dispone de un nueva pestaña en la ficha del producto para añadir códigos de p
 * upca
 
 Si se dispone de la libreria 'barcodenumber' estos códigos serán validados.
-
-Módulos de los que depende
-==========================
-
-Instalados
-----------
-
-.. toctree::
-   :maxdepth: 1
-
-   /product/index
-
-Dependencias
-------------
-
-* Product_
-
-.. _Product: ../product/index.html
