@@ -3,7 +3,6 @@
 #the full copyright notices and license terms.
 
 from trytond.model import ModelView, ModelSQL, fields
-from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 
 import logging
@@ -66,7 +65,7 @@ class ProductCode(ModelSQL, ModelView):
 
             #Check if user doesn't have put barcode in number
             if number.startswith(self.barcode):
-                number = vat_number[len(self.barcode):]
+                number = number[len(self.barcode):]
                 ProductCode.write([self], {
                     'number': number,
                     })
