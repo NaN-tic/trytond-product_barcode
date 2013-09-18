@@ -80,10 +80,9 @@ class Template:
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        number = clause[2:][0][1:][:-1]
         # Get codes
         codes = Pool().get('product.code').search([
-                    ('number', '=', number),
+                    ('number',) + tuple(clause[1:])
                     ], order=[])
         products = [code.product for code in codes]
         if products:
@@ -99,10 +98,9 @@ class Product:
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        number = clause[2:][0][1:][:-1]
         # Get codes
         codes = Pool().get('product.code').search([
-                    ('number', '=', number),
+                    ('number',) + tuple(clause[1:])
                     ], order=[])
         products = [code.product for code in codes]
 
