@@ -9,5 +9,6 @@ from .product import *
 def register():
     Pool.register(
         ProductCode,
+        Template,
         Product,
         module='product_barcode', type_='model')
