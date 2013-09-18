@@ -1,7 +1,6 @@
 #This file is part product_barcode module for Tryton.
 #The COPYRIGHT file at the top level of this repository contains
 #the full copyright notices and license terms.
-
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.pool import Pool, PoolMeta
 
@@ -20,6 +19,7 @@ try:
 except ImportError:
     logging.getLogger('product barcode').warning(
             'Unable to import barcodenumber. Product code number validation disabled.')
+
 
 class ProductCode(ModelSQL, ModelView):
     'ProductCode'
