@@ -106,7 +106,7 @@ class Product:
 
         #Get products by code
         prod_codes = Pool().get('product.product').search([
-                    ('code', '=', number),
+                    ('code',) + tuple(clause[1:])
                     ], order=[])
 
         products = products + prod_codes
