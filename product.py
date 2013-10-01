@@ -27,9 +27,7 @@ class ProductCode(ModelSQL, ModelView):
     barcode = fields.Selection(CODES, 'Code', 
         help="Setting code will enable validation of the product number.")
     number = fields.Char('Number', required=True)
-    sequence = fields.Integer('Sequence',
-        order_field='(%(table)s.sequence IS NULL) %(order)s, '
-        '%(table)s.sequence %(order)s')
+    sequence = fields.Integer('Sequence')
     product = fields.Many2One('product.product', 'Product', required=True)
 
     @classmethod
@@ -42,6 +40,11 @@ class ProductCode(ModelSQL, ModelView):
         cls._error_messages.update({
             'invalid_barcode_number': 'Invalid Barcode number!',
         })
+
+    @staticmethod
+    def order_sequence(tables):
+        table, _ = tables[None]
+        return [table.sequence == None, table.sequence]
 
     def get_rec_name(self, name):
         if self.barcode:
