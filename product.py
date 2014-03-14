@@ -84,7 +84,8 @@ class Template:
         'get_code', searcher='search_code')
 
     def get_code(self, name):
-        self.products[0].code
+        if self.products:
+            self.products[0].code
 
     @classmethod
     def search_code(cls, name, clause):
