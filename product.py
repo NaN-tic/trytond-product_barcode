@@ -80,6 +80,15 @@ class ProductCode(ModelSQL, ModelView):
 class Template:
     "Product Template"
     __name__ = "product.template"
+    code = fields.Function(fields.Char('Code'),
+        'get_code', searcher='search_code')
+
+    def get_code(self, name):
+        self.products[0].code
+
+    @classmethod
+    def search_code(cls, name, clause):
+        return [('products.code',) + tuple(clause[1:])]
 
     @classmethod
     def search_rec_name(cls, name, clause):
