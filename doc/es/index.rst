@@ -2,7 +2,8 @@
 Códigos de productos
 ====================
 
-Dispone de un nueva pestaña en la ficha del producto para añadir códigos de productos
+- Añade en la plantilla del producto el campo código por defecto del producto (el primer código de la variante del producto)
+- Dispone de un nueva pestaña en la ficha del producto para añadir códigos de productos:
 
 * code39
 * ean

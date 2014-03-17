@@ -1,7 +1,8 @@
 Product Barcode Module
 ######################
 
-Add new tab in product to management codes.
+- Add code in product.template (default code from product.product)
+- Add new tab in product to management codes.
 
 * code39
 * ean
