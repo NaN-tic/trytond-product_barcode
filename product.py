@@ -6,7 +6,7 @@ from trytond.pool import Pool, PoolMeta
 
 import logging
 
-__all__ = ['ProductCode', 'Product']
+__all__ = ['ProductCode', 'Template', 'Product']
 __metaclass__ = PoolMeta
 
 HAS_BARCODENUMBER = False
@@ -75,6 +75,22 @@ class ProductCode(ModelSQL, ModelView):
             else:
                 return False
         return True
+
+
+class Template:
+    __name__ = "product.template"
+
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        # Get codes
+        codes = Pool().get('product.code').search([
+                    ('number',) + tuple(clause[1:])
+                    ], order=[])
+        products = [code.product for code in codes]
+        if products:
+            return [('id', 'in', map(int, [product.template.id
+                    for product in products]))]
+        return super(Template, cls).search_rec_name(name, clause)
 
 
 class Product:
