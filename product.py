@@ -24,7 +24,7 @@ except ImportError:
 class ProductCode(ModelSQL, ModelView):
     'ProductCode'
     __name__ = 'product.code'
-    barcode = fields.Selection(CODES, 'Code', 
+    barcode = fields.Selection(CODES, 'Code',
         help="Setting code will enable validation of the product number.")
     number = fields.Char('Number', required=True)
     sequence = fields.Integer('Sequence')
@@ -99,18 +99,8 @@ class Product:
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        # Get codes
-        codes = Pool().get('product.code').search([
-                    ('number',) + tuple(clause[1:])
-                    ], order=[])
-        products = [code.product for code in codes]
-
-        #Get products by code
-        prod_codes = Pool().get('product.product').search([
-                    ('code',) + tuple(clause[1:])
-                    ], order=[])
-
-        products = products + prod_codes
-        if products:
-            return [('id', 'in', [product.id for product in products])]
-        return super(Product, cls).search_rec_name(name, clause)
+        res = super(Product, cls).search_rec_name(name, clause)
+        return ['OR',
+            res,
+            [('codes.number', ) + tuple(clause[1:])]
+            ]
