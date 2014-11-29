@@ -3,24 +3,68 @@
 The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
-         <!-- product.barcode -->
+         <!-- product.code -->
         <record model="ir.ui.view" id="product_barcode_view_form">
             <field name="model">product.code</field>
             <field name="type">form</field>
             <field name="name">product_barcode_form</field>
         </record>
-
         <record model="ir.ui.view" id="product_barcode_view_tree">
             <field name="model">product.code</field>
             <field name="type">tree</field>
             <field name="name">product_barcode_tree</field>
         </record>
 
+        <record model="ir.action.act_window" id="act_product_barcode_form">
+            <field name="name">Product Codes</field>
+            <field name="res_model">product.code</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_product_barcode_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="product_barcode_view_tree"/>
+            <field name="act_window" ref="act_product_barcode_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_product_barcode_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="product_barcode_view_form"/>
+            <field name="act_window" ref="act_product_barcode_form"/>
+        </record>
+        <menuitem parent="product.menu_product" action="act_product_barcode_form"
+            id="menu_cms_article_form" name="Codes"/>
+
         <!-- product.product -->
         <record model="ir.ui.view" id="product_view_form">
             <field name="model">product.product</field>
             <field name="inherit" ref="product.product_view_form"/>
             <field name="name">product_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_product_barcode_code_form2">
+            <field name="name">Codes</field>
+            <field name="res_model">product.code</field>
+            <field name="domain">[("product", 'in', Eval('active_ids'))]</field>
+        </record>
+        <record model="ir.action.keyword" id="act_open_product_barcode_code_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">product.product,-1</field>
+            <field name="action" ref="act_product_barcode_code_form2"/>
+        </record>
+
+        <!-- Access -->
+        <record model="ir.model.access" id="access_product_barcode">
+            <field name="model" search="[('model', '=', 'product.code')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_product_barcode_admin">
+            <field name="model" search="[('model', '=', 'product.code')]"/>
+            <field name="group" ref="product.group_product_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
         </record>
     </data>
 </tryton>

@@ -33,7 +33,8 @@ class ProductCode(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(ProductCode, cls).__setup__()
-        cls._order.insert(0, ('sequence', 'ASC'))
+        cls._order.insert(0, ('product', 'ASC'))
+        cls._order.insert(1, ('sequence', 'ASC'))
         cls._constraints += [
             ('check_barcode_number', 'invalid_barcode_number'),
         ]
