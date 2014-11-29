@@ -54,6 +54,18 @@ msgctxt "help:product.code,barcode:"
 msgid "Setting code will enable validation of the product number."
 msgstr "El codi del producte serà validat."
 
+msgctxt "model:ir.action,name:act_product_barcode_code_form2"
+msgid "Codes"
+msgstr "Codis"
+
+msgctxt "model:ir.action,name:act_product_barcode_form"
+msgid "Product Codes"
+msgstr "Codis producte"
+
+msgctxt "model:ir.ui.menu,name:menu_cms_article_form"
+msgid "Codes"
+msgstr "Codis"
+
 msgctxt "model:product.code,name:"
 msgid "ProductCode"
 msgstr "Codi de producte"
