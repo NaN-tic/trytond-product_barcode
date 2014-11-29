@@ -2,6 +2,11 @@
 Códigos de productos
 ====================
 
+.. inheritref:: product_barcode/product_barcode:section:codigos
+
+Códigos
+-------
+
 En los productos se dispone de una nueva pestaña para añadir códigos relacionado
 con el producto y estos pueden ser del tipo:
 
@@ -20,4 +25,4 @@ con el producto y estos pueden ser del tipo:
 * upc
 * upca
 
-Si se dispone de la libreria 'barcodenumber' estos códigos serán validados.
+En el caso que seleccione el tipo de código este será validado.
