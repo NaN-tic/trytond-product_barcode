@@ -29,6 +29,7 @@ class ProductCode(ModelSQL, ModelView):
     number = fields.Char('Number', required=True)
     sequence = fields.Integer('Sequence')
     product = fields.Many2One('product.product', 'Product', required=True)
+    active = fields.Boolean('Active')
 
     @classmethod
     def __setup__(cls):
@@ -41,6 +42,10 @@ class ProductCode(ModelSQL, ModelView):
         cls._error_messages.update({
             'invalid_barcode_number': 'Invalid Barcode number!',
         })
+
+    @staticmethod
+    def default_active():
+        return True
 
     @staticmethod
     def order_sequence(tables):
@@ -97,6 +102,20 @@ class Template:
 class Product:
     __name__ = 'product.product'
     codes = fields.One2Many('product.code', 'product', 'Codes')
+    code_code39 = fields.Function(fields.Char('CODE 39'), 'get_code_number')
+    code_ean = fields.Function(fields.Char('EAN'), 'get_code_number')
+    code_ean13 = fields.Function(fields.Char('EAN 13'), 'get_code_number')
+    code_ean8 = fields.Function(fields.Char('EAN 9'), 'get_code_number')
+    code_gs1 = fields.Function(fields.Char('GS1'), 'get_code_number')
+    code_gtin = fields.Function(fields.Char('GTIN'), 'get_code_number')
+    code_isbn = fields.Function(fields.Char('ISBN'), 'get_code_number')
+    code_isbn10 = fields.Function(fields.Char('ISBN 10'), 'get_code_number')
+    code_isbn13 = fields.Function(fields.Char('ISBN 13'), 'get_code_number')
+    code_issn = fields.Function(fields.Char('ISSN'), 'get_code_number')
+    code_jan = fields.Function(fields.Char('JAN'), 'get_code_number')
+    code_pzn = fields.Function(fields.Char('PZN'), 'get_code_number')
+    code_upc = fields.Function(fields.Char('UPC'), 'get_code_number')
+    code_upca = fields.Function(fields.Char('UPCA'), 'get_code_number')
 
     @classmethod
     def search_rec_name(cls, name, clause):
@@ -105,3 +124,11 @@ class Product:
             res,
             [('codes.number', ) + tuple(clause[1:])]
             ]
+
+    def get_code_number(self, name):
+        for code in self.codes:
+            if code.barcode:
+                n = 'code_%s' % code.barcode.lower()
+                if n == name:
+                    return code.number
+        return ''
