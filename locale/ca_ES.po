@@ -6,6 +6,10 @@ msgctxt "error:product.code:"
 msgid "Invalid Barcode number!"
 msgstr "El número de codi no és correcte."
 
+msgctxt "field:product.code,active:"
+msgid "Active"
+msgstr "Actiu"
+
 msgctxt "field:product.code,barcode:"
 msgid "Code"
 msgstr "Codi"
@@ -45,6 +49,62 @@ msgstr "Data modificació"
 msgctxt "field:product.code,write_uid:"
 msgid "Write User"
 msgstr "Usuari modificació"
+
+msgctxt "field:product.product,code_code39:"
+msgid "CODE 39"
+msgstr "CODE 39"
+
+msgctxt "field:product.product,code_ean13:"
+msgid "EAN 13"
+msgstr "EAN 13"
+
+msgctxt "field:product.product,code_ean8:"
+msgid "EAN 9"
+msgstr "EAN 9"
+
+msgctxt "field:product.product,code_ean:"
+msgid "EAN"
+msgstr "EAN"
+
+msgctxt "field:product.product,code_gs1:"
+msgid "GS1"
+msgstr "GS1"
+
+msgctxt "field:product.product,code_gtin:"
+msgid "GTIN"
+msgstr "GTIN"
+
+msgctxt "field:product.product,code_isbn10:"
+msgid "ISBN 10"
+msgstr "ISBN 10"
+
+msgctxt "field:product.product,code_isbn13:"
+msgid "ISBN 13"
+msgstr "ISBN 13"
+
+msgctxt "field:product.product,code_isbn:"
+msgid "ISBN"
+msgstr "ISBN"
+
+msgctxt "field:product.product,code_issn:"
+msgid "ISSN"
+msgstr "ISSN"
+
+msgctxt "field:product.product,code_jan:"
+msgid "JAN"
+msgstr "JAN"
+
+msgctxt "field:product.product,code_pzn:"
+msgid "PZN"
+msgstr "PZN"
+
+msgctxt "field:product.product,code_upc:"
+msgid "UPC"
+msgstr "UPC"
+
+msgctxt "field:product.product,code_upca:"
+msgid "UPCA"
+msgstr "UPCA"
 
 msgctxt "field:product.product,codes:"
 msgid "Codes"
