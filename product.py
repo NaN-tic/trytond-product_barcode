@@ -48,6 +48,10 @@ class ProductCode(ModelSQL, ModelView):
         return True
 
     @staticmethod
+    def default_sequence():
+        return 1
+
+    @staticmethod
     def order_sequence(tables):
         table, _ = tables[None]
         return [table.sequence == None, table.sequence]
