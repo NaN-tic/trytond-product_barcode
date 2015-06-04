@@ -131,8 +131,6 @@ class Product:
 
     def get_code_number(self, name):
         for code in self.codes:
-            if code.barcode:
-                n = 'code_%s' % code.barcode.lower()
-                if n == name:
-                    return code.number
-        return ''
+            if code.barcode and code.barcode.lower() == name[5:]:
+                return code.number
+        return None
