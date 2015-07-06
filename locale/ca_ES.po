@@ -6,6 +6,14 @@ msgctxt "error:product.code:"
 msgid "Invalid Barcode number!"
 msgstr "El número de codi no és correcte."
 
+msgctxt "error:product.code:"
+msgid ""
+"There is another code with the same number.\n"
+"The number of the product code must be unique!"
+msgstr ""
+"Hi ha un altre codi amb el mateix número.\n"
+"El número del codi del producte ha de ser únic."
+
 msgctxt "field:product.code,active:"
 msgid "Active"
 msgstr "Actiu"
@@ -132,7 +140,7 @@ msgstr "Codi de producte"
 
 msgctxt "selection:product.code,barcode:"
 msgid ""
-msgstr ""
+msgstr " "
 
 msgctxt "selection:product.code,barcode:"
 msgid "CODE39"
