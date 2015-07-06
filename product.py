@@ -39,6 +39,11 @@ class ProductCode(ModelSQL, ModelView):
         cls._constraints += [
             ('check_barcode_number', 'invalid_barcode_number'),
         ]
+        cls._sql_constraints.extend([
+            ('number_uniq', 'UNIQUE(barcode, number)',
+             'There is another code with the same number.\n'
+             'The number of the product code must be unique!')
+        ])
         cls._error_messages.update({
             'invalid_barcode_number': 'Invalid Barcode number!',
         })
