@@ -139,3 +139,11 @@ class Product:
             if code.barcode and code.barcode.lower() == name[5:]:
                 return code.number
         return None
+
+    @classmethod
+    def copy(cls, products, default=None):
+        if default is None:
+            default = {}
+        default = default.copy()
+        default['codes'] = None
+        return super(Product, cls).copy(products, default=default)
