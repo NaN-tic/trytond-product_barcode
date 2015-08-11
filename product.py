@@ -3,7 +3,6 @@
 #the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.pool import Pool, PoolMeta
-
 import logging
 
 __all__ = ['ProductCode', 'Template', 'Product']
@@ -17,8 +16,8 @@ try:
     for code in barcodenumber.barcodes():
         CODES.append((code, code))
 except ImportError:
-    logging.getLogger('product barcode').warning(
-            'Unable to import barcodenumber. Product code number validation disabled.')
+    logger = logging.getLogger(__name__)
+    logger.error('Unable to import barcodenumber. Install barcodenumber package.')
 
 
 class ProductCode(ModelSQL, ModelView):
