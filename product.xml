@@ -42,7 +42,9 @@ The COPYRIGHT file at the top level of this repository contains the full copyrig
         <record model="ir.action.act_window" id="act_product_barcode_code_form2">
             <field name="name">Codes</field>
             <field name="res_model">product.code</field>
-            <field name="domain">[("product", 'in', Eval('active_ids'))]</field>
+            <field name="domain"
+                eval="[('product', 'in', Eval('active_ids'))]"
+                pyson="1"/>
         </record>
         <record model="ir.action.keyword" id="act_open_product_barcode_code_keyword1">
             <field name="keyword">form_relate</field>
