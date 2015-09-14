@@ -140,7 +140,7 @@ msgstr "Codi de producte"
 
 msgctxt "selection:product.code,barcode:"
 msgid ""
-msgstr " "
+msgstr ""
 
 msgctxt "selection:product.code,barcode:"
 msgid "CODE39"
