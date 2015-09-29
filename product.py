@@ -1,7 +1,7 @@
 #This file is part product_barcode module for Tryton.
 #The COPYRIGHT file at the top level of this repository contains
 #the full copyright notices and license terms.
-from trytond.model import ModelView, ModelSQL, fields
+from trytond.model import ModelView, ModelSQL, fields, Unique
 from trytond.pool import Pool, PoolMeta
 import logging
 
@@ -33,13 +33,14 @@ class ProductCode(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(ProductCode, cls).__setup__()
+        t = cls.__table__()
         cls._order.insert(0, ('product', 'ASC'))
         cls._order.insert(1, ('sequence', 'ASC'))
         cls._constraints += [
             ('check_barcode_number', 'invalid_barcode_number'),
         ]
         cls._sql_constraints.extend([
-            ('number_uniq', 'UNIQUE(barcode, number)',
+            ('number_uniq', Unique(t, t.barcode, t.number),
              'There is another code with the same number.\n'
              'The number of the product code must be unique!')
         ])
