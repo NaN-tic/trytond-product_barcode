@@ -6,7 +6,6 @@ from trytond.pool import Pool, PoolMeta
 import logging
 
 __all__ = ['ProductCode', 'Template', 'Product']
-__metaclass__ = PoolMeta
 
 HAS_BARCODENUMBER = False
 CODES = [('', '')]
@@ -93,6 +92,7 @@ class ProductCode(ModelSQL, ModelView):
 
 
 class Template:
+    __metaclass__ = PoolMeta
     __name__ = "product.template"
 
     @classmethod
@@ -109,6 +109,7 @@ class Template:
 
 
 class Product:
+    __metaclass__ = PoolMeta
     __name__ = 'product.product'
     codes = fields.One2Many('product.code', 'product', 'Codes')
     code_code39 = fields.Function(fields.Char('CODE 39'), 'get_code_number')
