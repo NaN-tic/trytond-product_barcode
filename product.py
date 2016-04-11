@@ -98,14 +98,15 @@ class Template:
     @classmethod
     def search_rec_name(cls, name, clause):
         # Get codes
-        codes = Pool().get('product.code').search([
-                    ('number',) + tuple(clause[1:])
-                    ], order=[])
-        products = [code.product for code in codes]
-        if products:
-            return [('id', 'in', map(int, [product.template.id
-                    for product in products]))]
-        return super(Template, cls).search_rec_name(name, clause)
+        domain = super(Template, cls).search_rec_name(name, clause)
+        if clause[1].startswith('!') or clause[1].startswith('not '):
+            bool_op = 'AND'
+        else:
+            bool_op = 'OR'
+        return [bool_op,
+            domain,
+            ('products.codes.number',) + tuple(clause[1:]),
+            ]
 
 
 class Product:
@@ -129,10 +130,15 @@ class Product:
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        res = super(Product, cls).search_rec_name(name, clause)
-        return ['OR',
-            res,
-            [('codes.number', ) + tuple(clause[1:])]
+        # Get codes
+        domain = super(Product, cls).search_rec_name(name, clause)
+        if clause[1].startswith('!') or clause[1].startswith('not '):
+            bool_op = 'AND'
+        else:
+            bool_op = 'OR'
+        return [bool_op,
+            domain,
+            ('codes.number', ) + tuple(clause[1:]),
             ]
 
     def get_code_number(self, name):
