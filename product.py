@@ -1,7 +1,7 @@
 #This file is part product_barcode module for Tryton.
 #The COPYRIGHT file at the top level of this repository contains
 #the full copyright notices and license terms.
-from trytond.model import ModelView, ModelSQL, fields, Unique
+from trytond.model import ModelView, ModelSQL, fields, Unique, sequence_ordered
 from trytond.pool import Pool, PoolMeta
 import logging
 
@@ -19,13 +19,12 @@ except ImportError:
     logger.error('Unable to import barcodenumber. Install barcodenumber package.')
 
 
-class ProductCode(ModelSQL, ModelView):
+class ProductCode(sequence_ordered(), ModelSQL, ModelView):
     'ProductCode'
     __name__ = 'product.code'
     barcode = fields.Selection(CODES, 'Code',
         help="Setting code will enable validation of the product number.")
     number = fields.Char('Number', required=True)
-    sequence = fields.Integer('Sequence')
     product = fields.Many2One('product.product', 'Product', required=True)
     active = fields.Boolean('Active')
 
