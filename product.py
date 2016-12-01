@@ -25,7 +25,8 @@ class ProductCode(sequence_ordered(), ModelSQL, ModelView):
     barcode = fields.Selection(CODES, 'Code',
         help="Setting code will enable validation of the product number.")
     number = fields.Char('Number', required=True)
-    product = fields.Many2One('product.product', 'Product', required=True)
+    product = fields.Many2One('product.product', 'Product', required=True,
+        ondelete='CASCADE')
     active = fields.Boolean('Active')
 
     @classmethod
