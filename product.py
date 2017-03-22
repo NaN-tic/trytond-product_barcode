@@ -37,15 +37,15 @@ class ProductCode(sequence_ordered(), ModelSQL, ModelView):
         cls._order.insert(1, ('sequence', 'ASC'))
         cls._constraints += [
             ('check_barcode_number', 'invalid_barcode_number'),
-        ]
+            ]
         cls._sql_constraints.extend([
             ('number_uniq', Unique(t, t.barcode, t.number),
              'There is another code with the same number.\n'
              'The number of the product code must be unique!')
-        ])
+             ])
         cls._error_messages.update({
             'invalid_barcode_number': 'Invalid Barcode number!',
-        })
+            })
 
     @staticmethod
     def default_active():
@@ -67,9 +67,7 @@ class ProductCode(sequence_ordered(), ModelSQL, ModelView):
             return self.number
 
     def check_barcode_number(self):
-        '''
-        Check the code number depending of the barcode.
-        '''
+        'Check the code number depending of the barcode'
         if not HAS_BARCODENUMBER:
             return True
         number = self.number
