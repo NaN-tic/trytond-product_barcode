@@ -2,8 +2,12 @@
 #The COPYRIGHT file at the top level of this repository contains
 #the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, fields, Unique
-from trytond.pool import Pool, PoolMeta
+from trytond.pool import PoolMeta
+from sql.operators import BinaryOperator, Like
+from trytond.transaction import Transaction
+from trytond.config import config
 import logging
+import re
 
 __all__ = ['ProductCode', 'Template', 'Product']
 
@@ -17,6 +21,16 @@ try:
 except ImportError:
     logger = logging.getLogger(__name__)
     logger.error('Unable to import barcodenumber. Install barcodenumber package.')
+
+
+class Regexp(BinaryOperator):
+    __slots__ = ()
+    _operator = 'REGEXP'
+
+
+class PostgresqlRegexp(BinaryOperator):
+    __slots__ = ()
+    _operator = '~'
 
 
 class ProductCode(ModelSQL, ModelView):
@@ -80,7 +94,7 @@ class ProductCode(ModelSQL, ModelView):
         if not getattr(barcodenumber, 'check_code_' +
                 self.barcode.lower())(number):
 
-            #Check if user doesn't have put barcode in number
+            # Check if user doesn't have put barcode in number
             if number.startswith(self.barcode):
                 number = number[len(self.barcode):]
                 ProductCode.write([self], {
@@ -89,6 +103,54 @@ class ProductCode(ModelSQL, ModelView):
             else:
                 return False
         return True
+
+    @staticmethod
+    def regexp_function(db_type):
+        if db_type == 'postgresql':
+            return PostgresqlRegexp
+        elif db_type == 'mysql':
+            return Regexp
+        return None
+
+    @classmethod
+    def search(cls, args, offset=0, limit=None, order=None, count=False,
+            query=False):
+        args = args[:]
+        pos = 0
+        while pos < len(args):
+            if not args[pos]:
+                pos += 1
+                continue
+            if (args[pos][0] in ('number', 'rec_name')
+                    and args[pos][1] in ('like', 'ilike',
+                    'not like', 'not ilike') and args[pos][2]):
+                q = args[pos][2].replace('%', '')
+                if '.' in q:
+                    q = q.partition('.')
+                    db_type = config.get('database', 'uri').split(':')[0]
+                    regexp = cls.regexp_function(db_type)
+                    table = cls.__table__()
+                    if regexp:
+                        expression = '^%s0+%s$' % (q[0], q[2])
+                        ids = table.select(table.id, where=(
+                                regexp(table.number, expression)))
+                    else:
+                        cursor = Transaction().cursor
+                        cursor.execute(*table.select(table.id,
+                                table.number, where=(
+                                    Like(table.number, q[0] + '%' + q[2]))))
+                        pattern = '^%s0+%s$' % (q[0], q[2])
+                        ids = []
+                        for record in cursor.fetchall():
+                            if re.search(pattern, record[1]):
+                                ids.append(record[0])
+                    if args[pos][1].startswith('not'):
+                        args[pos] = ('id', 'not in', ids)
+                    else:
+                        args[pos] = ('id', 'in', ids)
+            pos += 1
+        return super(ProductCode, cls).search(args, offset=offset, limit=limit,
+                order=order, count=count, query=query)
 
 
 class Template:
