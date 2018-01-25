@@ -5,7 +5,6 @@ import unittest
 from decimal import Decimal
 import trytond.tests.test_tryton
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
-from trytond.transaction import Transaction
 from trytond.pool import Pool
 
 
@@ -13,14 +12,12 @@ class ProductBarcodeTestCase(ModuleTestCase):
     'Test Product Barcode module'
     module = 'product_barcode'
 
-
     @with_transaction()
     def test_barcode(self):
         'Test product barcode'
         pool = Pool()
         Uom = pool.get('product.uom')
         Template = pool.get('product.template')
-        Product = pool.get('product.product')
         ProductCode = pool.get('product.code')
 
         unit, = Uom.search([

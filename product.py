@@ -1,22 +1,22 @@
-#This file is part product_barcode module for Tryton.
-#The COPYRIGHT file at the top level of this repository contains
-#the full copyright notices and license terms.
+# This file is part product_barcode module for Tryton.
+# The COPYRIGHT file at the top level of this repository contains the full
+# copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, fields, Unique, sequence_ordered
-from trytond.pool import Pool, PoolMeta
+from trytond.pool import PoolMeta
 import logging
 
 __all__ = ['ProductCode', 'Template', 'Product']
 
-HAS_BARCODENUMBER = False
 CODES = [('', '')]
 try:
     import barcodenumber
-    HAS_BARCODENUMBER = True
     for code in barcodenumber.barcodes():
         CODES.append((code, code))
 except ImportError:
+    barcodenumber = None
     logger = logging.getLogger(__name__)
-    logger.error('Unable to import barcodenumber. Install barcodenumber package.')
+    logger.error(
+        'Unable to import barcodenumber. Install barcodenumber package.')
 
 
 class ProductCode(sequence_ordered(), ModelSQL, ModelView):
@@ -59,7 +59,7 @@ class ProductCode(sequence_ordered(), ModelSQL, ModelView):
 
     def check_barcode_number(self):
         'Check the code number depending of the barcode'
-        if not HAS_BARCODENUMBER:
+        if not barcodenumber:
             return True
         number = self.number
 
@@ -69,7 +69,7 @@ class ProductCode(sequence_ordered(), ModelSQL, ModelView):
         if not getattr(barcodenumber, 'check_code_' +
                 self.barcode.lower())(number):
 
-            #Check if user doesn't have put barcode in number
+            # Check if user doesn't have put barcode in number
             if number.startswith(self.barcode):
                 number = number[len(self.barcode):]
                 ProductCode.write([self], {
