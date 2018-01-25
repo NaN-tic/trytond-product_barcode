@@ -51,15 +51,6 @@ class ProductCode(sequence_ordered(), ModelSQL, ModelView):
     def default_active():
         return True
 
-    @staticmethod
-    def default_sequence():
-        return 1
-
-    @staticmethod
-    def order_sequence(tables):
-        table, _ = tables[None]
-        return [table.sequence == None, table.sequence]
-
     def get_rec_name(self, name):
         if self.barcode:
             return self.barcode + self.number
