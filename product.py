@@ -80,8 +80,7 @@ class ProductCode(sequence_ordered(), ModelSQL, ModelView):
         return True
 
 
-class Template:
-    __metaclass__ = PoolMeta
+class Template(metaclass=PoolMeta):
     __name__ = "product.template"
 
     @classmethod
@@ -98,8 +97,7 @@ class Template:
             ]
 
 
-class Product:
-    __metaclass__ = PoolMeta
+class Product(metaclass=PoolMeta):
     __name__ = 'product.product'
     codes = fields.One2Many('product.code', 'product', 'Codes')
     code_code39 = fields.Function(fields.Char('CODE 39'), 'get_code_number')
