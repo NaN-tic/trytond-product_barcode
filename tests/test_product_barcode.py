@@ -28,7 +28,6 @@ class ProductBarcodeTestCase(ModuleTestCase):
                 'name': 'P1',
                 'type': 'goods',
                 'list_price': Decimal(20),
-                'cost_price': Decimal(10),
                 'default_uom': unit.id,
                 'products': [('create', [{
                                 'code': '1',
