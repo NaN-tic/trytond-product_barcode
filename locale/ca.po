@@ -1,18 +1,6 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
-
-msgctxt "error:product.code:"
-msgid "Invalid Barcode number!"
-msgstr "El número de codi no és correcte."
-
-msgctxt "error:product.code:"
-msgid ""
-"There is another code with the same number.\n"
-"The number of the product code must be unique!"
-msgstr ""
-"Hi ha un altre codi amb el mateix número.\n"
-"El número del codi del producte ha de ser únic."
 
 msgctxt "field:product.code,active:"
 msgid "Active"
@@ -24,11 +12,11 @@ msgstr "Codi"
 
 msgctxt "field:product.code,create_date:"
 msgid "Create Date"
-msgstr "Data creació"
+msgstr "Data de creació"
 
 msgctxt "field:product.code,create_uid:"
 msgid "Create User"
-msgstr "Usuari creació"
+msgstr "Usuari de creació"
 
 msgctxt "field:product.code,id:"
 msgid "ID"
@@ -43,8 +31,8 @@ msgid "Product"
 msgstr "Producte"
 
 msgctxt "field:product.code,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom del registre"
 
 msgctxt "field:product.code,sequence:"
 msgid "Sequence"
@@ -52,11 +40,11 @@ msgstr "Seqüència"
 
 msgctxt "field:product.code,write_date:"
 msgid "Write Date"
-msgstr "Data modificació"
+msgstr "Data de modificació"
 
 msgctxt "field:product.code,write_uid:"
 msgid "Write User"
-msgstr "Usuari modificació"
+msgstr "Usuari de modificació"
 
 msgctxt "field:product.product,code_code39:"
 msgid "CODE 39"
@@ -130,6 +118,10 @@ msgctxt "model:ir.action,name:act_product_barcode_form"
 msgid "Product Codes"
 msgstr "Codis producte"
 
+msgctxt "model:ir.message,text:invalid_barcode_number"
+msgid "Invalid Barcode number!"
+msgstr "El número de codi no és correcte."
+
 msgctxt "model:ir.ui.menu,name:menu_cms_article_form"
 msgid "Codes"
 msgstr "Codis"
@@ -137,10 +129,6 @@ msgstr "Codis"
 msgctxt "model:product.code,name:"
 msgid "ProductCode"
 msgstr "Codi de producte"
-
-msgctxt "selection:product.code,barcode:"
-msgid ""
-msgstr ""
 
 msgctxt "selection:product.code,barcode:"
 msgid "CODE39"
@@ -201,3 +189,7 @@ msgstr "UPCA"
 msgctxt "view:product.code:"
 msgid "Product Codes"
 msgstr "Codis producte"
+
+msgctxt "view:product.product:"
+msgid "Codes"
+msgstr "Codis"

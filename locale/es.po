@@ -1,18 +1,6 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
-
-msgctxt "error:product.code:"
-msgid "Invalid Barcode number!"
-msgstr "El número de código no es correcto."
-
-msgctxt "error:product.code:"
-msgid ""
-"There is another code with the same number.\n"
-"The number of the product code must be unique!"
-msgstr ""
-"Hay otro código con el mismo número.\n"
-"El número del código del producto debe ser único."
 
 msgctxt "field:product.code,active:"
 msgid "Active"
@@ -24,11 +12,11 @@ msgstr "Código"
 
 msgctxt "field:product.code,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:product.code,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Usuario de creación"
 
 msgctxt "field:product.code,id:"
 msgid "ID"
@@ -43,8 +31,8 @@ msgid "Product"
 msgstr "Producto"
 
 msgctxt "field:product.code,rec_name:"
-msgid "Name"
-msgstr "Nombre"
+msgid "Record Name"
+msgstr "Nombre del registro"
 
 msgctxt "field:product.code,sequence:"
 msgid "Sequence"
@@ -52,11 +40,11 @@ msgstr "Secuencia"
 
 msgctxt "field:product.code,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:product.code,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
 
 msgctxt "field:product.product,code_code39:"
 msgid "CODE 39"
@@ -128,7 +116,11 @@ msgstr "Códigos"
 
 msgctxt "model:ir.action,name:act_product_barcode_form"
 msgid "Product Codes"
-msgstr "Códigos producto"
+msgstr "Códigos del producto"
+
+msgctxt "model:ir.message,text:invalid_barcode_number"
+msgid "Invalid Barcode number!"
+msgstr "El número de codi no és correcte."
 
 msgctxt "model:ir.ui.menu,name:menu_cms_article_form"
 msgid "Codes"
@@ -137,10 +129,6 @@ msgstr "Códigos"
 msgctxt "model:product.code,name:"
 msgid "ProductCode"
 msgstr "Código producto"
-
-msgctxt "selection:product.code,barcode:"
-msgid ""
-msgstr ""
 
 msgctxt "selection:product.code,barcode:"
 msgid "CODE39"
@@ -200,7 +188,7 @@ msgstr "UPCA"
 
 msgctxt "view:product.code:"
 msgid "Product Codes"
-msgstr "Códigos producto"
+msgstr "Códigos del producto"
 
 msgctxt "view:product.product:"
 msgid "Codes"
