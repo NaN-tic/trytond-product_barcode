@@ -7,18 +7,19 @@ import logging
 __all__ = ['ProductCode', 'Template', 'Product']
 
 CODES = [('', '')]
+
+logger = logging.getLogger(__name__)
+
 try:
     import barcodenumber
     for code in barcodenumber.barcodes():
         CODES.append((code, code))
 except ImportError:
     barcodenumber = None
-    logger = logging.getLogger(__name__)
     logger.error('Unable to import barcodenumber. Install barcodenumber '
         'package.')
 
-
-if barcodenumber.__version__ < 0.3:
+if barcodenumber.__version__ < '0.3':
     logger.warning('Please update the barcodenumber package.')
 
 
@@ -88,7 +89,7 @@ class ProductCode(sequence_ordered(), ModelSQL, ModelView):
             # Now in (barcodenumber == 0.3) there are no decoding methods
             # implemented, but in the next versions they will be.
             result = {}
-            decode_method_name = u'decode_code_{}'.format(self.barcode.lower())
+            decode_method_name = 'decode_code_{}'.format(self.barcode.lower())
             if hasattr(barcodenumber, decode_method_name):
                 decode_method = getattr(barcodenumber, decode_method_name)
                 result = decode_method(self.number)
