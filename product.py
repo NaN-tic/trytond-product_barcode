@@ -2,6 +2,8 @@
 # copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, fields, Unique, sequence_ordered
 from trytond.pool import PoolMeta
+from trytond.exceptions import UserError
+from trytond.i18n import gettext
 import logging
 
 __all__ = ['ProductCode', 'Template', 'Product']
