@@ -21,7 +21,7 @@ except ImportError:
     logger.error('Unable to import barcodenumber. Install barcodenumber '
         'package.')
 
-if barcodenumber.__version__ < '0.3':
+if barcodenumber and barcodenumber.__version__ < '0.3':
     logger.warning('Please update the barcodenumber package.')
 
 
